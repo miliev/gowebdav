@@ -329,7 +329,7 @@ func (c *Client) ReadStream(path string) (io.ReadCloser, error) {
 		return nil, newPathErrorErr("ReadStream", path, err)
 	}
 
-	if rs.StatusCode == 200 {
+	if rs.StatusCode == 200 || rs.StatusCode == 206 {
 		return rs.Body, nil
 	}
 
